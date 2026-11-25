@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-canvas: #07111F;
+    --bg-surface: #101E30;
+    --bg-surface-elevated: #15263C;
+    --accent-primary: #35C7AD;
+    --accent-secondary: #45D6BB;
+    --text-primary: #EAF0F7;
+    --text-muted: #91A5B8;
+    --danger: #FF6878;
+    --warning: #F3B94F;
+    --success: #35C7AD;
+  }
+
+  html {
+    font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+    background-color: #07111F;
+    color: #EAF0F7;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scan-beam {
+  0%, 100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 12s linear infinite;
+}
+
+.animate-scan-beam {
+  animation: scan-beam 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-radar-sweep,
+  .animate-scan-beam {
+    animation: none;
+  }
+}
